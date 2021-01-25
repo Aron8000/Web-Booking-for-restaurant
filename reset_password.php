@@ -1,4 +1,4 @@
- <?php 
+<?php 
   session_start(); 
 
   if (!isset($_SESSION['username'])) {
@@ -27,7 +27,7 @@ th,td {width:160px;text-align:center;}
 </style>
 
 
-	<title>Booking Details</title>
+	<title>Password Reset</title>
 
      <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
 
@@ -63,61 +63,64 @@ th,td {width:160px;text-align:center;}
 
 
 <a href="admin_feedback.php"><button>Feedback</button></a>
-
 <a href="reset_password.php"><button>Password Reset</button></a>
-
 <a href="trans.php"><button>Send Email</button></a>
-
 <a href="admin_rating.php"><button>Customer Rating</button></a>
 <br>
 </div>
 
 
-<form action="server.php" method="post">
-<center><h1><u>Table Reservation Details</u></h1></center>
+<form action="insert.php" method="post">
+
+
+<center><h1><u>Password Reset</u></h1></center>
+
+<center>
 <table>
-<tr><th>No</th><th>Date</th><th>Time</th><th>Name</th><th>Table No</th><th>Person</th><th>E-mail</th><th>Phone-Number</th></tr>
+<tr>
+	<th>ID</th>
+	<th>Name</th>
+	<th>UserName</th>
+	<th>Email Address</th>
+	<th>Reset</th>
+</tr>
 
 
+<?php
 
-
-
-<?php						$con=mysqli_connect('localhost', 'root', '', 'capstone2');
-							$query="select * from reserve_table";
-							$result=mysqli_query($con,$query);
+$con=mysqli_connect('localhost', 'root', '', 'capstone2');
+$query="select * from users";
+$result=mysqli_query($con,$query);
 							
-							$i = 1;
+//$i = 1;
 							
-							while($row = mysqli_fetch_assoc($result)){
-								echo '<tr align="center">';
-								echo '<td>'.$i.'</td>';
-								echo '<td>'.$row['dates'].'</td>';
-								echo '<td>'.$row['timesw'].'</td>';
-								echo '<td>'.$row['name'].'</td>';
-								echo '<td>'.$row['table_no'].'</td>';
-								echo '<td>'.$row['no_of_people'].'</td>';
-								echo '<td>'.$row['email'].'</td>';
-								echo '<td>'.$row['mobile'].'</td>';
-								echo '</tr>';
-								$i++;
-							}
-							
+while($row = mysqli_fetch_assoc($result)){
+	echo '<tr align="center">';
+	echo '<td>'.$row['id'].'</td>';
+	echo '<td>'.$row['name'].'</td>';
+	echo '<td>'.$row['username'].'</td>';
+	echo '<td>'.$row['email'].'</td>';
+	echo '<td>'.$row['reset'].'</td>';			
+				
+	echo '</tr>';
+	//$i++;
 
-
-
+}
 
 mysqli_close($con);
-?>
-
+						
+?>                      
 
 </table>
+</center>
 <br><br>
-<input type="text" name="namecus" placeholder="Enter Name" required> <input type="submit" value="Delete" name="delete">
 
+<input type="text"  name="id4" placeholder="Enter ID" required> 
+
+<input type="submit" value="Reset" name="reset">
 
 
 </div>
-
 
 
 </body>

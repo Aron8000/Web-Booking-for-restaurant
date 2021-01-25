@@ -12,6 +12,7 @@
   }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -72,18 +73,11 @@ th,td {width:160px;text-align:center;}
 <br>
 </div>
 
-
-<form action="server.php" method="post">
-<center><h1><u>Table Reservation Details</u></h1></center>
+<center><h1><u>Customer Rating</u></h1></center>
 <table>
-<tr><th>No</th><th>Date</th><th>Time</th><th>Name</th><th>Table No</th><th>Person</th><th>E-mail</th><th>Phone-Number</th></tr>
-
-
-
-
-
+<tr><th>No</th><th>Username</th><th>Staff Service</th><th>Food Service</th><th>Online Service</th><th>Comment</th></tr>
 <?php						$con=mysqli_connect('localhost', 'root', '', 'capstone2');
-							$query="select * from reserve_table";
+							$query="select * from rating";
 							$result=mysqli_query($con,$query);
 							
 							$i = 1;
@@ -91,13 +85,11 @@ th,td {width:160px;text-align:center;}
 							while($row = mysqli_fetch_assoc($result)){
 								echo '<tr align="center">';
 								echo '<td>'.$i.'</td>';
-								echo '<td>'.$row['dates'].'</td>';
-								echo '<td>'.$row['timesw'].'</td>';
-								echo '<td>'.$row['name'].'</td>';
-								echo '<td>'.$row['table_no'].'</td>';
-								echo '<td>'.$row['no_of_people'].'</td>';
-								echo '<td>'.$row['email'].'</td>';
-								echo '<td>'.$row['mobile'].'</td>';
+								echo '<td>'.$row['username'].'</td>';
+								echo '<td>'.$row['staff'].'</td>';
+								echo '<td>'.$row['food'].'</td>';
+								echo '<td>'.$row['onlineb'].'</td>';
+								echo '<td>'.$row['comment'].'</td>';
 								echo '</tr>';
 								$i++;
 							}
@@ -108,17 +100,8 @@ th,td {width:160px;text-align:center;}
 
 mysqli_close($con);
 ?>
-
-
 </table>
-<br><br>
-<input type="text" name="namecus" placeholder="Enter Name" required> <input type="submit" value="Delete" name="delete">
 
-
-
-</div>
-
-
-
+<p></p>
 </body>
 </html>

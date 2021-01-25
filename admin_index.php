@@ -1,4 +1,4 @@
- <?php 
+<?php 
   session_start(); 
 
   if (!isset($_SESSION['username'])) {
@@ -21,13 +21,12 @@
 	body{
 		background-image: url("images/seafoodwallpaper.jpg");
 	}
-table,th,td {border:1px solid black;border-collapse:collapse;padding:5px;}
-th,td {width:160px;text-align:center;}
+
 
 </style>
 
 
-	<title>Booking Details</title>
+	<title>Admin</title>
 
      <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
 
@@ -49,11 +48,13 @@ th,td {width:160px;text-align:center;}
     	
     <?php endif ?>	
 
+
 <div class="back">
-<h1 style="border-right:15px;border-top:15px;border-left:15px;text-align: center;font-size: 45px; color:	#996515"><strong>Port Village Seafood Restaurant</strong></h1>
+<h1 style="border-right:15px;border-top:15px;border-left:15px;text-align: center;font-size: 45px; color:#996515"><strong>Port Village Seafood Restaurant</strong></h1>
 
 <h1 style="border-right:15px;border-top:5px;border-left:5px;text-align: center;font-size: 50px;color:#DC143C">港村海鲜楼</strong></h1>
 </div>
+
 <br>
 <div class="tab">
 
@@ -69,50 +70,19 @@ th,td {width:160px;text-align:center;}
 <a href="trans.php"><button>Send Email</button></a>
 
 <a href="admin_rating.php"><button>Customer Rating</button></a>
-<br>
+
 </div>
 
 
-<form action="server.php" method="post">
-<center><h1><u>Table Reservation Details</u></h1></center>
-<table>
-<tr><th>No</th><th>Date</th><th>Time</th><th>Name</th><th>Table No</th><th>Person</th><th>E-mail</th><th>Phone-Number</th></tr>
+
+<br><br><br>
+<p style="text-align: center; font-size: 45px;"><strong>Welcome back, Admin</strong></p>
 
 
 
 
+</div>
 
-<?php						$con=mysqli_connect('localhost', 'root', '', 'capstone2');
-							$query="select * from reserve_table";
-							$result=mysqli_query($con,$query);
-							
-							$i = 1;
-							
-							while($row = mysqli_fetch_assoc($result)){
-								echo '<tr align="center">';
-								echo '<td>'.$i.'</td>';
-								echo '<td>'.$row['dates'].'</td>';
-								echo '<td>'.$row['timesw'].'</td>';
-								echo '<td>'.$row['name'].'</td>';
-								echo '<td>'.$row['table_no'].'</td>';
-								echo '<td>'.$row['no_of_people'].'</td>';
-								echo '<td>'.$row['email'].'</td>';
-								echo '<td>'.$row['mobile'].'</td>';
-								echo '</tr>';
-								$i++;
-							}
-							
-
-
-
-
-mysqli_close($con);
-?>
-
-
-</table>
-<br><br>
-<input type="text" name="namecus" placeholder="Enter Name" required> <input type="submit" value="Delete" name="delete">
 
 
 
